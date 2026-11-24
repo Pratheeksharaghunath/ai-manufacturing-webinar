@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Manufacturing: Free Live Webinar | Manvian</title>
+<meta name="description" content="Free live webinar on using AI to cut downtime, improve quality and plan production. Register now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#081633; --navy2:#10265a; --blue:#2f6bff; --blue2:#5b8dff; --mint:#22d3a6;
+  --bg:#f4f7fb; --ink:#0d1b36; --mut:#5b6b88; --line:#e2e8f2; --white:#fff;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --shadow:0 12px 32px rgba(13,27,54,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px}
+.lead{color:var(--mut);font-size:1.1rem;max-width:58ch}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 1rem var(--font);border:0;border-radius:12px;padding:14px 26px;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#1f4fd6);color:#fff;box-shadow:0 10px 24px rgba(47,107,255,.35)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(47,107,255,.45)}
+.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.btn.ghost:hover{background:rgba(255,255,255,.16)}
+.btn.sm{padding:10px 18px;font-size:.93rem;border-radius:10px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(8,22,51,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.25rem}
+.brand svg{width:30px;height:30px}
+.links{display:flex;gap:28px;color:#c4d1ee;font-weight:500;font-size:.95rem}
+.links a:hover{color:#fff}
+
+/* hero */
+.hero{color:#fff;padding:72px 0 96px;
+  background:radial-gradient(800px 480px at 88% 8%,rgba(47,107,255,.5),transparent 62%),radial-gradient(560px 360px at 0% 100%,rgba(34,211,166,.2),transparent 62%),linear-gradient(180deg,var(--navy),#0a1d45)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,211,166,.14);color:#7cf0cf;border:1px solid rgba(34,211,166,.35);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.88rem;margin-bottom:20px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(34,211,166,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(34,211,166,0)}100%{box-shadow:0 0 0 0 rgba(34,211,166,0)}}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4rem);margin-bottom:18px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#7ea6ff,var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{color:#b9c8e8;margin-bottom:28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+.facts{display:flex;flex-wrap:wrap;gap:12px}
+.fact{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:12px 18px}
+.fact small{display:block;color:#9fb2d9;font-size:.78rem}
+.fact b{font-size:1.02rem}
+
+/* dashboard mock */
+.mock{position:relative}
+.mock svg{width:100%;height:auto;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45))}
+.mock .draw{stroke-dasharray:700;stroke-dashoffset:700;animation:draw 2.4s .3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.mock .draw{animation:none;stroke-dashoffset:0}.badge i{animation:none}}
+
+/* countdown strip */
+.strip{margin-top:-44px;position:relative;z-index:2}
+.strip .box{background:#fff;border-radius:20px;box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:22px 30px}
+.strip .t{font-weight:700}
+.strip .t span{display:block;color:var(--mut);font-weight:500;font-size:.92rem}
+.count{display:flex;gap:10px}
+.count div{background:var(--bg);border-radius:12px;padding:8px 14px;min-width:68px;text-align:center}
+.count b{display:block;font-size:1.5rem;line-height:1.2;color:var(--blue)}
+.count small{color:var(--mut);font-size:.75rem}
+
+section{padding:84px 0}
+.head{margin-bottom:40px}
+.head .kicker{color:var(--blue);font-weight:700;font-size:.92rem;margin-bottom:8px}
+
+/* benefit cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:#bcd0ff}
+.ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#e7eeff,#dff9f1);margin-bottom:18px}
+.ico svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.2rem;margin-bottom:8px}
+.card p{color:var(--mut);font-size:.97rem}
+
+/* calculator */
+.calcsec{background:var(--navy);color:#fff;background-image:radial-gradient(600px 300px at 100% 0,rgba(47,107,255,.35),transparent 60%)}
+.calcsec .lead{color:#b9c8e8}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px}
+.calc .in,.calc .out{border-radius:20px;padding:30px}
+.calc .in{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.calc label{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px;color:#dbe5ff}
+.calc input[type=number]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font:inherit;margin-bottom:16px}
+.calc input[type=range]{width:100%;accent-color:var(--mint)}
+.out{background:linear-gradient(145deg,#fff,#eef4ff);color:var(--ink);display:flex;flex-direction:column;justify-content:center}
+.out small{color:var(--mut);font-weight:600}
+.out .big{font-size:clamp(2.6rem,7vw,3.8rem);font-weight:800;letter-spacing:-.03em;color:var(--blue);line-height:1.1;margin:6px 0 10px}
+.out .r{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:12px;margin-top:12px;font-size:.95rem}
+.out .fine{font-size:.82rem;color:var(--mut);margin-top:14px}
+
+/* agenda */
+.agenda{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:8px 30px}
+.slot{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.slot:last-child{border:0}
+.slot time{background:#e9f0ff;color:var(--blue);font-weight:700;border-radius:10px;padding:6px 12px;text-align:center;font-size:.95rem}
+.slot h3{font-size:1.15rem;margin-bottom:2px}
+.slot p{color:var(--mut)}
+
+/* speaker */
+.spk{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:34px}
+.avatar{aspect-ratio:1;border-radius:20px;background:linear-gradient(145deg,var(--blue),var(--mint));display:grid;place-items:center;color:#fff;font-size:4.2rem;font-weight:800}
+.spk h3{font-size:1.9rem}
+.spk .role{color:var(--blue);font-weight:700;margin:2px 0 12px}
+.spk p{color:var(--mut);max-width:58ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:.88rem;font-weight:600}
+
+/* faq */
+.faq{max-width:820px}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--mut);margin-top:10px}
+
+/* register */
+.reg{color:#fff;background:radial-gradient(700px 400px at 0 0,rgba(34,211,166,.2),transparent 60%),radial-gradient(700px 400px at 100% 100%,rgba(47,107,255,.5),transparent 60%),var(--navy)}
+.reg .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.reg .lead{color:#b9c8e8;margin-bottom:22px}
+.tick{list-style:none}
+.tick li{padding-left:30px;position:relative;margin-bottom:10px;color:#dbe5ff}
+.tick li::before{content:"";position:absolute;left:0;top:7px;width:18px;height:18px;border-radius:50%;background:var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23081633' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+form,.done{background:#fff;color:var(--ink);border-radius:22px;padding:34px;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+form h3,.done h3{font-size:1.5rem;margin-bottom:4px}
+form .s{color:var(--mut);font-size:.93rem;margin-bottom:20px}
+form label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+form input,form select{width:100%;padding:13px 14px;border:1.5px solid #cdd6e6;border-radius:10px;font:inherit;margin-bottom:16px;background:#fff;color:var(--ink)}
+form input:focus,form select:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 4px rgba(47,107,255,.15)}
+.err{color:#c0262d;font-size:.86rem;margin:-10px 0 12px;display:none}
+form .btn{width:100%;justify-content:center;padding:16px}
+.note{font-size:.8rem;color:var(--mut);margin-top:12px;text-align:center}
+.done{display:none;text-align:center}
+.done .ck{width:64px;height:64px;border-radius:50%;background:#e2f8f0;margin:0 auto 16px;display:grid;place-items:center}
+.done .ck svg{width:32px;height:32px;stroke:#14a37a;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.done p{color:var(--mut);margin:8px 0 20px}
+
+footer{background:#050f24;color:#8ea2cc;padding:30px 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:900px){
+  .hero{padding:48px 0 80px}
+  .hero .wrap,.reg .wrap,.calc,.spk{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .links{display:none}
+  .spk{padding:24px}.avatar{max-width:180px}
+}
+@media (max-width:600px){
+  .cards{grid-template-columns:1fr}
+  .slot{grid-template-columns:1fr;gap:8px}
+  .slot time{justify-self:start}
+  section{padding:60px 0}
+  .count div{min-width:58px;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Manvian home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2f6bff"/><path d="M7 23V9l9 9 9-9v14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Manvian
+    </a>
+    <div class="links"><a href="#learn">What you will learn</a><a href="#calc">Savings calculator</a><a href="#agenda">Agenda</a><a href="#speaker">Speaker</a><a href="#faq">FAQ</a></div>
+    <a class="btn primary sm" href="#register">Register free</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="badge"><i></i>Free live webinar</div>
+      <h1>AI for <em>Manufacturing</em>: from machine data to better decisions</h1>
+      <p class="lead">See how AI reduces downtime, catches defects earlier and plans production with less guesswork. Practical examples for plant managers, engineers and business owners.</p>
+      <div class="cta">
+        <a class="btn primary" href="#register">Reserve my seat</a>
+        <a class="btn ghost" href="#calc">Try the savings calculator</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><small>Date</small><b>Sat, 6 Dec 2026</b></div>
+        <div class="fact"><small>Time</small><b>11:00 AM IST</b></div>
+        <div class="fact"><small>Format</small><b>Live online, 60 min</b></div>
+      </div>
+    </div>
+
+    <div class="mock" aria-hidden="true">
+      <svg viewBox="0 0 520 430" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bff" stop-opacity=".5"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></linearGradient>
+          <linearGradient id="ln" x1="0" x2="1"><stop offset="0" stop-color="#5b8dff"/><stop offset="1" stop-color="#22d3a6"/></linearGradient>
+        </defs>
+        <rect x="1" y="1" width="518" height="428" rx="24" fill="#0f2350" stroke="rgba(255,255,255,.14)"/>
+        <circle cx="30" cy="30" r="6" fill="#ff6b6b"/><circle cx="50" cy="30" r="6" fill="#ffc94d"/><circle cx="70" cy="30" r="6" fill="#3ddc97"/>
+        <text x="100" y="35" fill="#9fb2d9" font-size="13" font-family="sans-serif">Line 3 machine health (sample data)</text>
+        <g font-family="sans-serif">
+          <rect x="28" y="62" width="145" height="74" rx="14" fill="rgba(255,255,255,.07)"/><text x="44" y="88" fill="#9fb2d9" font-size="12">Uptime</text><text x="44" y="118" fill="#fff" font-size="24" font-weight="700">94.2%</text>
+          <rect x="187" y="62" width="145" height="74" rx="14" fill="rgba(255,255,255,.07)"/><text x="203" y="88" fill="#9fb2d9" font-size="12">Defect rate</text><text x="203" y="118" fill="#22d3a6" font-size="24" font-weight="700">0.8%</text>
+          <rect x="346" y="62" width="145" height="74" rx="14" fill="rgba(255,255,255,.07)"/><text x="362" y="88" fill="#9fb2d9" font-size="12">Forecast match</text><text x="362" y="118" fill="#fff" font-size="24" font-weight="700">91%</text>
+        </g>
+        <g stroke="rgba(255,255,255,.08)"><path d="M28 200H492M28 250H492M28 300H492M28 350H492"/></g>
+        <path d="M28 330 C80 318,110 322,150 290 S230 262,270 270 S350 224,390 206 S450 170,492 160 L492 372 L28 372Z" fill="url(#ar)"/>
+        <path class="draw" d="M28 330 C80 318,110 322,150 290 S230 262,270 270 S350 224,390 206 S450 170,492 160" fill="none" stroke="url(#ln)" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="390" cy="206" r="8" fill="#ffc94d"/><circle cx="390" cy="206" r="15" fill="none" stroke="#ffc94d" stroke-opacity=".5"/>
+        <rect x="262" y="150" width="190" height="38" rx="10" fill="#fff"/>
+        <text x="276" y="174" fill="#0d1b36" font-size="12.5" font-weight="700" font-family="sans-serif">Bearing wear predicted in 6 days</text>
+        <text x="28" y="404" fill="#9fb2d9" font-size="12" font-family="sans-serif">Week 1</text><text x="236" y="404" fill="#9fb2d9" font-size="12" font-family="sans-serif">Week 3</text><text x="448" y="404" fill="#9fb2d9" font-size="12" font-family="sans-serif">Week 6</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap"><div class="box">
+    <div class="t">Seats are limited<span>The webinar starts on 6 December 2026 at 11:00 AM IST</span></div>
+    <div class="count" id="count" aria-label="Time left until the webinar"></div>
+    <a class="btn primary sm" href="#register">Register free</a>
+  </div></div>
+</div>
+
+<section id="learn">
+  <div class="wrap">
+    <div class="head"><div class="kicker">What you will learn</div><h2>Six practical skills for the shop floor</h2><p class="lead">Each topic comes with a real example and a next step you can take at work the following week.</p></div>
+    <div class="cards">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div><h3>Predict failures early</h3><p>Use sensor data to get a warning before a machine stops the line.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Catch defects faster</h3><p>See how computer vision inspects every product, every shift.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div><h3>Plan production better</h3><p>Match output to real demand and cut stock and waste.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.6-.6-.6-2.6z"/></svg></div><h3>Pick the right tools</h3><p>A short list of AI tools that work without a data science team.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg></div><h3>Estimate the payback</h3><p>Compare project cost with savings before you commit budget.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></svg></div><h3>Run a first pilot</h3><p>A 30-day plan with clear success measures for your first project.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="calcsec" id="calc">
+  <div class="wrap">
+    <div class="head" style="margin:0"><div class="kicker" style="color:#7cf0cf">Savings calculator</div><h2>What could AI save your plant?</h2><p class="lead">Enter your own numbers for a rough yearly estimate. We will show how to refine it in the webinar.</p></div>
+    <div class="calc">
+      <div class="in">
+        <label for="lines">Production lines or critical machines</label><input id="lines" type="number" min="1" value="4">
+        <label for="hrs">Unplanned downtime per line (hours per month)</label><input id="hrs" type="number" min="0" value="12">
+        <label for="cost">Cost of one hour of downtime (₹)</label><input id="cost" type="number" min="0" step="1000" value="25000">
+        <label for="cut">Downtime AI might remove: <b id="cutv">25</b>%</label><input id="cut" type="range" min="5" max="50" value="25">
+      </div>
+      <div class="out" role="status" aria-live="polite">
+        <small>Estimated yearly saving</small>
+        <div class="big" id="save">₹0</div>
+        <div class="r"><span>Downtime now</span><b id="now"></b></div>
+        <div class="r"><span>Downtime with AI</span><b id="after"></b></div>
+        <p class="fine">Illustrative estimate only. Real results depend on your machines, data and process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agenda">
+  <div class="wrap">
+    <div class="head"><div class="kicker">Agenda</div><h2>Sixty minutes, five parts</h2></div>
+    <div class="agenda">
+      <div class="slot"><time>11:00 AM</time><div><h3>Welcome and why AI, why now</h3><p>The state of AI in Indian manufacturing today.</p></div></div>
+      <div class="slot"><time>11:10 AM</time><div><h3>Where AI pays off first</h3><p>Predictive maintenance, quality inspection and demand planning.</p></div></div>
+      <div class="slot"><time>11:30 AM</time><div><h3>Live demo</h3><p>Finding defects in product images with an AI model.</p></div></div>
+      <div class="slot"><time>11:45 AM</time><div><h3>Starting small</h3><p>The data you need, tools to try and mistakes to avoid.</p></div></div>
+      <div class="slot"><time>11:55 AM</time><div><h3>Questions and answers</h3><p>Ask the speaker anything.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="speaker" style="padding-top:0">
+  <div class="wrap">
+    <div class="spk">
+      <div class="avatar" aria-hidden="true">AR</div>
+      <div>
+        <h3>Dr. Ananya Rao</h3>
+        <div class="role">Head of Industrial AI, Manvian</div>
+        <p>Ananya has 12 years of experience applying machine learning in automotive and electronics plants. She has led projects that reduced unplanned downtime and inspection time across multiple factories.</p>
+        <div class="chips"><span>Predictive maintenance</span><span>Computer vision</span><span>Demand forecasting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div class="kicker">FAQ</div><h2>Questions people ask</h2></div>
+    <div class="faq">
+      <details><summary>Do I need coding or data science skills?</summary><p>No. The session is built for plant managers, engineers and owners. Ideas are explained in plain language.</p></details>
+      <details><summary>Is it really free?</summary><p>Yes. Registration and attendance are free, with no hidden charges.</p></details>
+      <details><summary>Will there be a recording?</summary><p>Registered attendees will get the slides and a recording link after the session.</p></details>
+      <details><summary>Is this useful for a small factory?</summary><p>Yes. The session ends with low-cost pilots that need little data.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="reg" id="register">
+  <div class="wrap">
+    <div>
+      <h2>Reserve your free seat</h2>
+      <p class="lead">Register once and we will email the joining link and a reminder before the session.</p>
+      <ul class="tick">
+        <li>Live demo of AI defect detection</li>
+        <li>Savings checklist for your plant</li>
+        <li>Slides and recording after the session</li>
+      </ul>
+    </div>
+    <div>
+      <form id="form" novalidate>
+        <h3>Register for the webinar</h3>
+        <p class="s">Sat, 6 Dec 2026 at 11:00 AM IST, online</p>
+        <label for="name">Full name</label><input id="name" type="text" autocomplete="name">
+        <div class="err" data-for="name">Enter your full name.</div>
+        <label for="email">Work email</label><input id="email" type="email" autocomplete="email">
+        <div class="err" data-for="email">Enter a valid email address.</div>
+        <label for="phone">Phone number</label><input id="phone" type="tel" autocomplete="tel">
+        <div class="err" data-for="phone">Enter a 10-digit phone number.</div>
+        <label for="role">Your role</label>
+        <select id="role"><option>Plant or operations manager</option><option>Engineer</option><option>Business owner</option><option>Student</option><option>Other</option></select>
+        <button class="btn primary" type="submit">Register now</button>
+        <p class="note">Demo form: details are not stored or sent anywhere.</p>
+      </form>
+      <div class="done" id="done" role="status" tabindex="-1">
+        <div class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div>
+        <h3>You are registered</h3>
+        <p id="dmsg"></p>
+        <a class="btn primary" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=AI%20for%20Manufacturing%20Webinar&amp;dates=20261206T053000Z/20261206T063000Z&amp;details=Free%20live%20webinar%20by%20Manvian">Add to calendar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Manvian. All rights reserved.</span><span>Speaker profile and dashboard shown are illustrative.</span></div></footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+
+  /* countdown to 6 Dec 2026, 11:00 IST */
+  var target=Date.UTC(2026,11,6,5,30),box=$('count');
+  function tick(){
+    var d=target-Date.now();
+    if(d<=0){box.innerHTML='<div><b>Live</b><small>now</small></div>';return}
+    var v=[[Math.floor(d/864e5),'days'],[Math.floor(d%864e5/36e5),'hours'],[Math.floor(d%36e5/6e4),'mins'],[Math.floor(d%6e4/1e3),'secs']];
+    box.innerHTML=v.map(function(x){return '<div><b>'+x[0]+'</b><small>'+x[1]+'</small></div>'}).join('');
+  }
+  tick();setInterval(tick,1000);
+
+  /* savings calculator */
+  var fmt=function(n){
+    if(n>=1e7)return '₹'+(n/1e7).toFixed(2)+' crore';
+    if(n>=1e5)return '₹'+(n/1e5).toFixed(2)+' lakh';
+    return '₹'+Math.round(n).toLocaleString('en-IN');
+  };
+  function calc(){
+    var l=Math.max(0,+$('lines').value||0),h=Math.max(0,+$('hrs').value||0),c=Math.max(0,+$('cost').value||0),r=+$('cut').value;
+    $('cutv').textContent=r;
+    var yr=l*h*12,sv=yr*r/100;
+    $('save').textContent=fmt(sv*c);
+    $('now').textContent=Math.round(yr).toLocaleString('en-IN')+' hrs/yr';
+    $('after').textContent=Math.round(yr-sv).toLocaleString('en-IN')+' hrs/yr';
+  }
+  ['lines','hrs','cost','cut'].forEach(function(i){$(i).addEventListener('input',calc)});
+  calc();
+
+  /* form */
+  var f=$('form');
+  var rules={
+    name:function(v){return v.trim().length>=2},
+    email:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())},
+    phone:function(v){return /^\d{10}$/.test(v.replace(/[\s+\-]/g,'').replace(/^91(?=\d{10}$)/,''))}
+  };
+  f.addEventListener('submit',function(e){
+    e.preventDefault();var ok=true;
+    Object.keys(rules).forEach(function(k){
+      var v=rules[k]($(k).value),m=f.querySelector('[data-for="'+k+'"]');
+      m.style.display=v?'none':'block';if(!v)ok=false;
+    });
+    if(!ok)return;
+    $('dmsg').textContent='Thanks, '+$('name').value.trim().split(' ')[0]+'. We will send the joining link to '+$('email').value.trim()+'.';
+    f.style.display='none';$('done').style.display='block';$('done').focus();
+  });
+})();
+</script>
+</body>
+</html>
